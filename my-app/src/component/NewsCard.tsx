@@ -19,7 +19,7 @@ const NewsCard = (data: any) => {
 
   return (
     <>
-      <div className="relative w-96 h-60 overflow-hidden rounded-xl shadow-lg group">
+      <div className="relative w-90 h-60 overflow-hidden rounded-xl shadow-lg group">
         {/* Background image */}
         <img
           src={data.urlToImage}
