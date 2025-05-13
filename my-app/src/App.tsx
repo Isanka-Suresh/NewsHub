@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import { sample } from './data/SampleData';
 import NewsCard from './component/NewsCard';
@@ -10,8 +9,7 @@ function App() {
   //const [persons, setPerson] = useState<person[]>([]);
 
   useEffect(() => {
-    fetchNews();
-    
+    fetchNews();  
   },[])
 
   const fetchNews = async () => {
@@ -49,16 +47,24 @@ function App() {
   
 
   return (
-    <>
     <div 
-    className='w-full h-16 bg-gradient-to-r from-slate-600 to-blue-950 text-center font-bold text-5xl text-white'>
-      News HUB
-      </div >
-      <div className='bg-gradient-to-r from-zinc-700 to-neutral-800 flex justify-center'>
-        
-      <div className='grid lg:grid-cols-5 gap-x-10 gap-y-5 mt-2 mr-4 sm:grid-cols-1 '>
-      
-      
+      className="light relative">
+    <div 
+      className='relative w-full h-16 pl-2 bg-header'>
+     <img 
+        src ="news logo.png" 
+        alt="logo" 
+        className='h-full pb-2' />
+      <div 
+        className='pl-2 text-left font-bold text-5xl text-white'>
+          News HUB
+      </div>
+    </div >
+    <div 
+      className='bg-background flex justify-center'>        
+      <div 
+        className='grid lg:grid-cols-5 gap-x-10 gap-y-5 mt-2 mr-4 sm:grid-cols-1 '>
+
       {articles.map((data) => (
         <NewsCard 
           key={data.source.name}{...data}
@@ -66,7 +72,7 @@ function App() {
         </div>
       </div>
       
-    </>
+    </div>
   );
 }
 

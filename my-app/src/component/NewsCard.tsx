@@ -1,6 +1,5 @@
 import moment from 'moment';
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
 
 //  interface Article {
 //     source: {
@@ -16,16 +15,41 @@ import { Card, Button } from 'react-bootstrap';
 //     content: string;
 //   }
 
-  const NewsCard = (data: any ) => {
+const NewsCard = (data: any) => {
 
   return (
     <>
-      <Card  className='w-80 rounded-2xl shadow-lg hover:shadow-xl border-2 bg-slate-700 border-cyan-800 hover:shadow-cyan-500/50 text-white '>
+      <div className="relative w-96 h-60 overflow-hidden rounded-xl shadow-lg group">
+        {/* Background image */}
+        <img
+          src={data.urlToImage}
+          alt="Card"
+          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+        />
+
+        {/* Bottom gradient overlay */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/80 via-black/50 to-transparent pointer-events-none" />
+
+        {/* Text Container */}
+        <div className="absolute bottom-8 left-4 right-4">
+          {/* Default text (visible before hover) */}
+          <p className="absolute text-white text-lg font-semibold transition-opacity duration-300 group-hover:opacity-0">
+            Text A - Always visible
+          </p>
+
+          {/* Hover text (slides up on hover) */}
+          <p className="absolute text-white text-lg font-semibold opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+            Text B - On hover!
+          </p>
+        </div>
+      </div>
+
+      {/* <Card  className='w-100 rounded-2xl overflow-hidden relative'>
       <a href={data.url}  target="_blank" rel="noreferrer">
-      <Card.Img variant="top" src={data.urlToImage} className='w-full h-40 rounded-t-2xl border-2' />
-      <Card.Body>
+      <Card.Img variant="top" src={data.urlToImage} className='w-full h-60 transition-transform duration-300 ease-in-out rounded-2xl hover:scale-110' />
+      <Card.Body className= "w-100 h-60 absolute bg-red">
       
-        <Card.Title className='text-xl leading-none font-bold px-2'>{data.title}</Card.Title>
+        <Card.Title className='top-0 text-xl leading-none font-bold px-2'>{data.title}</Card.Title>
        
         <Card.Title className='text-sm leading-none font-medium pt-2 px-2'>by {data.author}</Card.Title>
         <Card.Title className='text-xs leading-none font-thin pt-1 px-2'>{moment(data.publishedAt).format("MMM Do, YYYY")}</Card.Title>
@@ -33,12 +57,12 @@ import { Card, Button } from 'react-bootstrap';
 
         <Card.Text className='text-base leading-5 px-2 py-2'>
           {data.description} 
-          <a href={data.url} className='text-blue-500 font-semibold'>..See More</a>
+          <a href={data.url} className='text-white font-semibold'>..See More</a>
         </Card.Text>
       </Card.Body>
       </a>
-    </Card>
-    
+    </Card> */}
+
     </>
   );
 };
