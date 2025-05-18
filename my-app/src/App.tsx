@@ -9,15 +9,15 @@ function App() {
   //const [persons, setPerson] = useState<person[]>([]);
 
   useEffect(() => {
-    fetchNews();  
-  },[])
+    fetchNews();
+  }, [])
 
   const fetchNews = async () => {
     try {
       const response = await axios.get('https://newsapi.org/v2/top-headlines?sources=cnn,bbc-news,the-verge&pageSize=25&page=1&apiKey=0353eca61c1a40bea318234fbacab6b8');
       //&from=2024-08-23&to=2024-08-24&domains=engadget.com&pageSize=10&page=1
       const data = response.data;
-      setArticles(data.articles); 
+      setArticles(data.articles);
       console.log(articles)
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -44,34 +44,30 @@ function App() {
     content: string;
   }
 
-  
-
   return (
-    <div 
+    <div
       className="light relative">
-    <div 
-      className='relative w-full h-16 flex bg-header'>
-     <img 
-        src ="news logo.png" 
-        alt="logo" 
-        className='h-full' />
-      <div 
-        className='pt-1 text-left font-bold text-5xl text-white'>
+      <div
+        className='relative w-full h-16 flex bg-header'>
+        <img
+          src="news logo.png"
+          alt="logo"
+          className='h-full' />
+        <div
+          className='pt-1 text-left font-bold text-5xl text-white'>
           News HUB
-      </div>
-    </div >
-    <div 
-      className='bg-background flex justify-center'>        
-      <div 
-        className='m-2 grid gap-5 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
-
-      {articles.map((data) => (
-        <NewsCard 
-          key={data.source.name}{...data}
-        />))}
+        </div>
+      </div >
+      <div
+        className='bg-background flex justify-center'>
+        <div
+          className='m-2 grid gap-5 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 '>
+          {articles.map((data) => (
+            <NewsCard
+              key={data.source.name}{...data}
+            />))}
         </div>
       </div>
-      
     </div>
   );
 }
