@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Ring } from 'ldrs/react'
-import 'ldrs/react/Ring1.css'
+import 'ldrs/react/Ring.css'
 import { sample } from './data/SampleData';
 import NewsCard from './component/NewsCard';
 
