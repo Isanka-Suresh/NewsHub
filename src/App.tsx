@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Ring2 } from 'ldrs/react'
+import 'ldrs/react/Ring2.css'
 import { sample } from './data/SampleData';
 import NewsCard from './component/NewsCard';
+
+
+// Default values shown
 
 function App() {
 
   const [articles, setArticles] = useState<article[]>([]);
-  //const [persons, setPerson] = useState<person[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchNews();
   }, [])
 
   const fetchNews = async () => {
+    setLoading(true)
     try {
       const response = await axios.get('https://newsapi.org/v2/top-headlines?sources=cnn,bbc-news,the-verge&pageSize=25&page=1&apiKey=0353eca61c1a40bea318234fbacab6b8');
       //&from=2024-08-23&to=2024-08-24&domains=engadget.com&pageSize=10&page=1
@@ -21,6 +27,8 @@ function App() {
       console.log(articles)
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -42,6 +50,19 @@ function App() {
     urlToImage: string;
     publishedAt: string;
     content: string;
+  }
+
+  if (loading) {
+    return <div className='absolute bottom-1/2 left-1/2'>
+      <Ring2
+  size="40"
+  stroke="5"
+  strokeLength="0.25"
+  bgOpacity="0.1"
+  speed="0.8"
+  color="black" 
+/>
+    </div>; // Replace with your loader component
   }
 
   return (
