@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Ring1 } from 'ldrs/react'
+import { Ring } from 'ldrs/react'
 import 'ldrs/react/Ring1.css'
 import { sample } from './data/SampleData';
 import NewsCard from './component/NewsCard';
@@ -54,10 +54,9 @@ function App() {
 
   if (loading) {
     return <div className='absolute bottom-1/2 left-1/2'>
-      <Ring1
+      <Ring
         size="40"
         stroke="5"
-        strokeLength="0.25"
         bgOpacity="0.1"
         speed="0.8"
         color="black"
