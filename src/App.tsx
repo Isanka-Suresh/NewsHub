@@ -5,9 +5,6 @@ import 'ldrs/react/Ring.css'
 import { sample } from './data/SampleData';
 import NewsCard from './component/NewsCard';
 
-
-// Default values shown
-
 function App() {
 
   const [articles, setArticles] = useState<article[]>([]);
@@ -20,34 +17,38 @@ function App() {
   const fetchNews = async () => {
     setLoading(true)
     try {
-      const response = await axios.get('https://newsapi.org/v2/top-headlines?sources=cnn,bbc-news,the-verge&pageSize=25&page=1&apiKey=0353eca61c1a40bea318234fbacab6b8');
-      //&from=2024-08-23&to=2024-08-24&domains=engadget.com&pageSize=10&page=1
+      const response = await axios.get(
+        `https://newsapi.org/v2/top-headlines?sources=cnn,bbc-news,the-verge&pageSize=24&page=1&apiKey=${process.env.REACT_APP_NEWSAPI}`
+      );
+      
       const data = response.data;
-      setArticles(data.articles);
-      console.log(articles)
+      console.log(data)
+      if (Array.isArray(data.articles) && data.articles.length > 0) {
+        setArticles(data.articles);
+      } else {
+        console.warn('Empty articles received. Falling back to sample data.');
+        setArticles(sample);
+      }
+  
     } catch (error) {
       console.error('Error fetching data:', error);
+      console.warn('Falling back to sample data.');
+      setArticles(sample);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
-
-  // interface person {
-  //   id: number;
-  //   title: string;
-  // }
-
 
   interface article {
     source: {
       id: string | null;
       name: string;
     };
-    author: string;
+    author: string | null;
     title: string;
     description: string;
     url: string;
-    urlToImage: string;
+    urlToImage: string | null;
     publishedAt: string;
     content: string;
   }
@@ -61,7 +62,7 @@ function App() {
         speed="0.8"
         color="black"
       />
-    </div>; // Replace with your loader component
+    </div>; 
   }
 
   return (
