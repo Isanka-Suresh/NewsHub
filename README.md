@@ -2,6 +2,14 @@
 
 **NewsHub** is a React-based web application that fetches and displays news articles from various sources using the **News API**. It provides a clean and interactive interface for users to browse top headlines and sample news data.
 
+## Preview
+
+### Main Interface
+![NewsHub Main Interface](public/news%20hub.png)
+
+### Secondary Interface
+![NewsHub Secondary Interface](public/news%20hub%202.png)
+
 ## Features
 
 - Fetches top headlines from sources like **CNN**, **BBC News**, and **The Verge**.
