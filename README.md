@@ -1,46 +1,122 @@
-# Getting Started with Create React App
+# NewsHub
+
+**NewsHub** is a React-based web application that fetches and displays news articles from various sources using the **News API**. It provides a clean and interactive interface for users to browse top headlines and sample news data.
+
+## Features
+
+- Fetches top headlines from sources like **CNN**, **BBC News**, and **The Verge**.
+- Displays articles in a visually appealing format using custom components like `NewsCard` and `Slider`.
+- Handles API errors gracefully by falling back to sample data.
+- Loading indicator using the `Ring` component from the `ldrs/react` library.
+
+## Project Structure
+
+```
+.env
+.github/
+  workflows/
+    deploy.yml
+.gitignore
+package.json
+public/
+  index.html
+  manifest.json
+  robots.txt
+README.md
+src/
+  App.test.tsx
+  App.tsx
+  component/
+    NewsCard.tsx
+    Slider.tsx
+  data/
+    SampleData.jsx
+  index.css
+  index.tsx
+  react-app-env.d.ts
+  reportWebVitals.ts
+  setupTests.ts
+tailwind.config.js
+tsconfig.json
+```
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Prerequisites
+
+- Node.js and npm installed on your system.
+- A valid API key for [News API](https://newsapi.org/).
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/NewsHub.git
+   ```
+
+2. Navigate to the project directory:
+   ```sh
+   cd NewsHub
+   ```
+
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+4. Create a `.env` file in the root directory and add your News API key:
+   ```
+   REACT_APP_NEWSAPI=your_api_key_here
+   ```
+
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.  
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### `npm test`
 
-### `npm test`
+Launches the test runner in interactive watch mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `npm run build`
 
-### `npm run build`
+Builds the app for production to the `build` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `npm run eject`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Copies all configuration files and dependencies into your project for customization.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Components
 
-### `npm run eject`
+### `NewsCard`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Displays individual news articles with title, description, and image.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Slider`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Provides a carousel-like interface for browsing articles.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Data Handling
+
+### `SampleData`
+
+Contains fallback sample data used when the News API fails.
+
+## Deployment
+
+Refer to the [Create React App deployment documentation](https://facebook.github.io/create-react-app/docs/deployment) for instructions on deploying the app.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [React Documentation](https://reactjs.org/)
+- [News API Documentation](https://newsapi.org/docs)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+
+This project is licensed under the **MIT License**.
